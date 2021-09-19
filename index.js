@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -19,11 +20,11 @@ const questions = [
     {
         type: 'input',
         name: 'email',
-        message: 'Please provide an email address for user outreach:'
+        message: 'Please provide an email address for user outreach (Optional):'
     },
     {
         type: 'input',
-        name: 'projectTitle',
+        name: 'title',
         message: 'Enter a title for your project (Required):',
         validate: titleInput => {
             if (titleInput) {
@@ -77,7 +78,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Select a license (Required):',
-        choices: ['afl-3.0', 'agpl-3.0', 'apache-2.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'bsl-1.0', 'cc', 'cc0-1.0', 'cc-by-4.0', 'cc-by-sa-4.0', 'wtfpl', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'gpl-3.0', 'isc', 'lgpl', 'lgpl-2.1', 'lgpl-3.0', 'lppl-1.3c', 'mit', 'mpl-2.0', 'ms-pl', 'ncsa', 'ofl-1.1', 'osl-3.0', 'postgresql', 'unlicense', 'zlib'],
+        choices: ['afl-3.0', 'agpl-3.0', 'apache-2.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'bsl-1.0', 'cc', 'cc-by-4.0', 'cc-by-sa-4.0', 'cc0-1.0', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'gpl-3.0', 'isc', 'lgpl', 'lgpl-2.1', 'lgpl-3.0', 'lppl-1.3c', 'mit', 'mpl-2.0', 'ms-pl', 'ncsa', 'ofl-1.1', 'osl-3.0', 'postgresql', 'unlicense', 'wtfpl', 'zlib'],
         default: 'mit',
         validate: licenseSelection => {
             if (licenseSelection) {
@@ -91,17 +92,50 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: 'Please enter guidelines for how other developers might contribute:'
+        message: 'Provide guidelines for how other developers might contribute (Optional):'
     },
     {
         type: 'input',
         name: 'test',
-        message: 'Please include any test instructions here:'
+        message: 'Include test instructions (Optional):'
     }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    const { github, email, title, description, installation, usage, license, contributing, test } = data;
+    return `
+    [![${license} License][license-shield]][license-url]
+    # ${title}
+    
+    ## Description
+    
+
+    ${description}
+    
+    ## Table of Contents
+
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Questions](#questions)
+    
+
+    ## Installation
+    
+    ${installation}
+    
+
+    ## Usage
+    
+    ${usage}
+    
+    
+    ## License
+    
+    Distributed under the ${license} License. See ``LICENSE`` for more information.
+    `
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -109,4 +143,7 @@ function init() {
 }
 
 // Function call to initialize app
-init();
+init()
+    .then(projectData => {
+        writeToFile('./dist/README.md', projectData);
+    });
