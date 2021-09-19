@@ -24,7 +24,7 @@ const questions = [
     {
         type: 'input',
         name: 'projectTitle',
-        message: 'What is the title of your project? (Required)',
+        message: 'Enter a title for your project (Required):',
         validate: titleInput => {
             if (titleInput) {
               return true;
@@ -77,34 +77,13 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Select a license (Required):',
-        choices: ['agpl-3.0', 'gpl-3.0', 'lgpl-3.0', 'mpl-2.0', 'apache-2.0', 'mit', 'bsl-1.0', 'unlicense', 'Show Me More'],
+        choices: ['afl-3.0', 'agpl-3.0', 'apache-2.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'bsl-1.0', 'cc', 'cc0-1.0', 'cc-by-4.0', 'cc-by-sa-4.0', 'wtfpl', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'gpl-3.0', 'isc', 'lgpl', 'lgpl-2.1', 'lgpl-3.0', 'lppl-1.3c', 'mit', 'mpl-2.0', 'ms-pl', 'ncsa', 'ofl-1.1', 'osl-3.0', 'postgresql', 'unlicense', 'zlib'],
         default: 'mit',
         validate: licenseSelection => {
             if (licenseSelection) {
               return true;
             } else {
               console.log('Please choose a license!');
-              return false;
-            }
-        }
-    },
-    {
-        type: 'list',
-        name: 'additionalLicenses',
-        message: 'Select a license (Required):',
-        choices: ['afl-3.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'cc', 'cc0-1.0', 'cc-by-4.0', 'cc-by-sa-4.0', 'wtfpl', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'lgpl', 'lgpl-2.1', 'isc', 'lppl-1.3c', 'ms-pl', 'osl-3.0', 'postgresql', 'ofl-1.1', 'ncsa', 'zlib'],
-        validate: licenseSelection2 => {
-            if (licenseSelection2) {
-              return true;
-            } else {
-              console.log('Please enter usage information!');
-              return false;
-            }
-        },
-        when: ({license}) => {
-            if (license === 'Show Me More') {
-              return true;
-            } else {
               return false;
             }
         }
@@ -125,7 +104,9 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    return inquirer.prompt(questions);
+}
 
 // Function call to initialize app
 init();
