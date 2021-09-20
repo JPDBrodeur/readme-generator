@@ -176,7 +176,7 @@ ${test}
 
 ## Questions
 
-* GitHub Username: [${github}](https://github.com/${github})
+* GitHub Profile: [${github}](https://github.com/${github})
 
 * Email Address: [${email}](mailto:${email})
     `
