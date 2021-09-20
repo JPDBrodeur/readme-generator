@@ -6,32 +6,6 @@ const fs = require('fs');
 const questions = [
     {
         type: 'input',
-        name: 'github',
-        message: 'Enter your GitHub Username:',
-        validate: githubInput => {
-            if (githubInput) {
-            return true;
-            } else {
-            console.log('Please enter your GitHub Username!');
-            return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Please provide an email address for user outreach:',
-        validate: emailInput => {
-            if (emailInput) {
-            return true;
-            } else {
-            console.log('Please enter your email!');
-            return false;
-            }
-        }
-    },
-    {
-        type: 'input',
         name: 'title',
         message: 'Enter a title for your project:',
         validate: titleInput => {
@@ -86,8 +60,8 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Select a license:',
-        choices: ['afl_3.0', 'agpl-3.0', 'apache-2.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'bsl-1.0', 'cc', 'cc-by-4.0', 'cc-by-sa-4.0', 'cc0-1.0', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'gpl-3.0', 'isc', 'lgpl', 'lgpl-2.1', 'lgpl-3.0', 'lppl-1.3c', 'mit', 'mpl-2.0', 'ms-pl', 'ncsa', 'ofl-1.1', 'osl-3.0', 'postgresql', 'unlicense', 'wtfpl', 'zlib'],
-        default: 'mit',
+        choices: ['AGPL v3', 'Apache 2.0', 'Artistic 2.0', 'BSD 2-Clause', 'BSD 3-Clause', 'CC BY 4.0', 'CC BY-SA 4.0', 'CC0-1.0', 'EPL 1.0', 'GPL v2', 'GPL v3', 'ISC', 'LGPL v3', 'MIT', 'MPL 2.0', 'OFL 1.1', 'Unlicense', 'WTFPL', 'Zlib'],
+        default: 'MIT',
         validate: licenseSelection => {
             if (licenseSelection) {
               return true;
@@ -122,6 +96,32 @@ const questions = [
             return false;
             }
         }
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub Username:',
+        validate: githubInput => {
+            if (githubInput) {
+            return true;
+            } else {
+            console.log('Please enter your GitHub Username!');
+            return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Please provide an email address for user outreach:',
+        validate: emailInput => {
+            if (emailInput) {
+            return true;
+            } else {
+            console.log('Please enter your email!');
+            return false;
+            }
+        }
     }
 ];
 
@@ -130,7 +130,7 @@ function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
     // Optional Contributing section
     const readmeContent = `
-![Github License](https://img.shields.io/badge/License-${license}-brightgreen)
+![License: ${license}](https://img.shields.io/badge/License-${license}-brightgreen)
 
 # ${title}
 
@@ -161,7 +161,7 @@ ${usage}
 
 ## License
 
-Distributed under the ${license} License. See LICENSE for more information.
+Distributed under the ${license} License.
 
 
 ## Contributing
