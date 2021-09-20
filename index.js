@@ -105,35 +105,36 @@ const questions = [
 function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
     const readmeContent = `
-    [![${license} License][license-shield]][license-url]
-    # ${title}
-    
-    ## Description
-    
+[![Github License](https://img.shields.io/badge/License-${license}-brightgreen)
 
-    ${description}
-    
-    ## Table of Contents
+# ${title}
 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Questions](#questions)
-    
+## Description
 
-    ## Installation
-    
-    ${installation}
-    
 
-    ## Usage
-    
-    ${usage}
-    
-    
-    ## License
-    
-    Distributed under the ${license} License. See LICENSE for more information.
+${description}
+
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Questions](#questions)
+
+
+## Installation
+
+${installation}
+
+
+## Usage
+
+${usage}
+
+
+## License
+
+Distributed under the ${license} License. See LICENSE for more information.
     `
 
     fs.writeFile(fileName, readmeContent, err => {
