@@ -171,7 +171,7 @@ ${contributing}
 
 ## Tests
 
-${tests}
+${test}
 
 
 ## Questions
