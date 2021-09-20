@@ -104,7 +104,7 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
-    return `
+    const readmeContent = `
     [![${license} License][license-shield]][license-url]
     # ${title}
     
@@ -133,8 +133,14 @@ function writeToFile(fileName, data) {
     
     ## License
     
-    Distributed under the ${license} License. See ``LICENSE`` for more information.
+    Distributed under the ${license} License. See LICENSE for more information.
     `
+
+    fs.writeFile(fileName, readmeContent, err => {
+        if (err) throw new Error(err);
+  
+        console.log('README created! Check out README.md file in the dist folder to see it!');
+    });
 }
 
 // TODO: Create a function to initialize app
