@@ -7,7 +7,7 @@ const questions = [
     {
         type: 'input',
         name: 'github',
-        message: 'Enter your GitHub Username (Required):',
+        message: 'Enter your GitHub Username:',
         validate: githubInput => {
             if (githubInput) {
             return true;
@@ -20,12 +20,20 @@ const questions = [
     {
         type: 'input',
         name: 'email',
-        message: 'Please provide an email address for user outreach (Optional):'
+        message: 'Please provide an email address for user outreach:',
+        validate: emailInput => {
+            if (emailInput) {
+            return true;
+            } else {
+            console.log('Please enter your email!');
+            return false;
+            }
+        }
     },
     {
         type: 'input',
         name: 'title',
-        message: 'Enter a title for your project (Required):',
+        message: 'Enter a title for your project:',
         validate: titleInput => {
             if (titleInput) {
               return true;
@@ -38,7 +46,7 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Provide a project description (Required):',
+        message: 'Provide a project description:',
         validate: descriptionInput => {
             if (descriptionInput) {
               return true;
@@ -51,7 +59,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'Step-by-step instructions for installation (Required):',
+        message: 'Step-by-step instructions for installation:',
         validate: installInput => {
             if (installInput) {
               return true;
@@ -64,7 +72,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'Enter usage information and examples (Required):',
+        message: 'Enter usage information and examples:',
         validate: usageInput => {
             if (usageInput) {
               return true;
@@ -77,14 +85,14 @@ const questions = [
     {
         type: 'list',
         name: 'license',
-        message: 'Select a license (Required):',
-        choices: ['afl-3.0', 'agpl-3.0', 'apache-2.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'bsl-1.0', 'cc', 'cc-by-4.0', 'cc-by-sa-4.0', 'cc0-1.0', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'gpl-3.0', 'isc', 'lgpl', 'lgpl-2.1', 'lgpl-3.0', 'lppl-1.3c', 'mit', 'mpl-2.0', 'ms-pl', 'ncsa', 'ofl-1.1', 'osl-3.0', 'postgresql', 'unlicense', 'wtfpl', 'zlib'],
+        message: 'Select a license:',
+        choices: ['afl_3.0', 'agpl-3.0', 'apache-2.0', 'artistic-2.0', 'bsd-2-clause', 'bsd-3-clause', 'bsd-3-clause-clear', 'bsl-1.0', 'cc', 'cc-by-4.0', 'cc-by-sa-4.0', 'cc0-1.0', 'ecl-2.0', 'epl-1.0', 'epl-2.0', 'eupl-1.1', 'gpl', 'gpl-2.0', 'gpl-3.0', 'isc', 'lgpl', 'lgpl-2.1', 'lgpl-3.0', 'lppl-1.3c', 'mit', 'mpl-2.0', 'ms-pl', 'ncsa', 'ofl-1.1', 'osl-3.0', 'postgresql', 'unlicense', 'wtfpl', 'zlib'],
         default: 'mit',
         validate: licenseSelection => {
             if (licenseSelection) {
               return true;
             } else {
-              console.log('Please choose a license!');
+              console.log('Please select a license!');
               return false;
             }
         }
@@ -92,20 +100,37 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: 'Provide guidelines for how other developers might contribute (Optional):'
+        message: 'Provide guidelines for how other developers might contribute:',
+        validate: contributingInput => {
+            if (contributingInput) {
+            return true;
+            } else {
+            console.log('Please enter guidelines for contributing!');
+            return false;
+            }
+        }
     },
     {
         type: 'input',
         name: 'test',
-        message: 'Include test instructions (Optional):'
+        message: 'Include test instructions:',
+        validate: testInput => {
+            if (testInput) {
+            return true;
+            } else {
+            console.log('Please enter your test instructions!');
+            return false;
+            }
+        }
     }
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
+    // Optional Contributing section
     const readmeContent = `
-[![Github License](https://img.shields.io/badge/License-${license}-brightgreen)
+![Github License](https://img.shields.io/badge/License-${license}-brightgreen)
 
 # ${title}
 
@@ -119,6 +144,8 @@ ${description}
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
 * [Questions](#questions)
 
 
@@ -135,6 +162,23 @@ ${usage}
 ## License
 
 Distributed under the ${license} License. See LICENSE for more information.
+
+
+## Contributing
+
+${contributing}
+
+
+## Tests
+
+${tests}
+
+
+## Questions
+
+* GitHub Username: [${github}](https://github.com/${github})
+
+* Email Address: [${email}](mailto:${email})
     `
 
     fs.writeFile(fileName, readmeContent, err => {
