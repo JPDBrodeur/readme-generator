@@ -128,7 +128,6 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
-    // Optional Contributing section
     const readmeContent = `
 ![License: ${license}](https://img.shields.io/badge/License-${license}-brightgreen)
 
