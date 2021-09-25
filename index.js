@@ -125,11 +125,36 @@ const questions = [
     }
 ];
 
+// 'CC0-1.0', 'EPL 1.0', 'GPL v2', 'GPL v3', 'ISC', 'LGPL v3', 'MIT', 'MPL 2.0', 'OFL 1.1', 'Unlicense', 'WTFPL', 'Zlib'
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
+    var link = '';
+    switch (license.choices) {
+        case 'AGPL v3':
+            link = 'https://choosealicense.com/licenses/agpl-3.0/';
+            break;
+        case 'Apache 2.0':
+            link = 'https://choosealicense.com/licenses/apache-2.0/';
+            break;
+        case 'Artistic 2.0':
+            link = 'https://choosealicense.com/licenses/artistic-2.0/';
+            break;
+        case 'BSD 2-Clause':
+            link = 'https://choosealicense.com/licenses/bsd-2-clause/';
+            break;
+        case 'BSD 3-Clause':
+            link = 'https://choosealicense.com/licenses/bsd-3-clause/';
+            break;
+        case 'CC BY 4.0':
+            link = 'https://choosealicense.com/licenses/cc-by-4.0/';
+            break;
+        case 'CC BY-SA 4.0':
+            link = 'https://choosealicense.com/licenses/cc-by-sa-4.0/';
+            break;
+      };
     const readmeContent = `
-![License: ${license}](https://img.shields.io/badge/License-${license}-brightgreen)
+[![License: ${license}](https://img.shields.io/badge/License-${license}-brightgreen)](${link})
 
 # ${title}
 
@@ -160,7 +185,7 @@ ${usage}
 
 ## License
 
-Distributed under the ${license} License.
+Distributed under the [${license} License](${link}).
 
 
 ## Contributing
