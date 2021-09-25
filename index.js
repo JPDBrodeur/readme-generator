@@ -125,12 +125,11 @@ const questions = [
     }
 ];
 
-// 'CC0-1.0', 'EPL 1.0', 'GPL v2', 'GPL v3', 'ISC', 'LGPL v3', 'MIT', 'MPL 2.0', 'OFL 1.1', 'Unlicense', 'WTFPL', 'Zlib'
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     const { github, email, title, description, installation, usage, license, contributing, test } = data;
-    var link = '';
-    switch (license.choices) {
+    let link = '';
+    switch (license) {
         case 'AGPL v3':
             link = 'https://choosealicense.com/licenses/agpl-3.0/';
             break;
@@ -152,6 +151,43 @@ function writeToFile(fileName, data) {
         case 'CC BY-SA 4.0':
             link = 'https://choosealicense.com/licenses/cc-by-sa-4.0/';
             break;
+        case 'CC0-1.0':
+            link = 'https://choosealicense.com/licenses/cc0-1.0/';
+            break;
+        case 'EPL 1.0':
+            link = 'https://choosealicense.com/licenses/epl-1.0/';
+            break;
+        case 'GPL v2':
+            link = 'https://choosealicense.com/licenses/gpl-2.0/';
+            break;
+        case 'GPL v3':
+            link = 'https://choosealicense.com/licenses/gpl-3.0/';
+            break;
+        case 'ISC':
+            link = 'https://choosealicense.com/licenses/isc/';
+            break;
+        case 'LGPL v3':
+            link = 'https://choosealicense.com/licenses/lgpl-3.0/';
+            break;
+        case 'MIT':
+            link = 'https://choosealicense.com/licenses/mit/';
+            break;
+        case 'MPL 2.0':
+            link = 'https://choosealicense.com/licenses/mpl-2.0/';
+            break;
+        case 'OFL 1.1':
+            link = 'https://choosealicense.com/licenses/ofl-1.1/';
+            break;
+        case 'Unlicense':
+            link = 'https://choosealicense.com/licenses/unlicense/';
+            break;
+        case 'WTFPL':
+            link = 'https://choosealicense.com/licenses/wtfpl/';
+            break;
+        case 'Zlib':
+            link = 'https://choosealicense.com/licenses/zlib/';
+            break;
+            
       };
     const readmeContent = `
 [![License: ${license}](https://img.shields.io/badge/License-${license}-brightgreen)](${link})

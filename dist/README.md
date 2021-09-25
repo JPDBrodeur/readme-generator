@@ -1,12 +1,12 @@
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache 2.0-brightgreen)]()
+[![License: Unlicense](https://img.shields.io/badge/License-Unlicense-brightgreen)](https://choosealicense.com/licenses/unlicense/)
 
-# gsgagh
+# Professional README Generator
 
 ## Description
 
 
-aeherahare
+You can quickly and easily generate a README file by using a command-line application to generate one. This allows the project creator to devote more time working on the project.
 
 ## Table of Contents
 
@@ -20,32 +20,32 @@ aeherahare
 
 ## Installation
 
-hreahreahrae
+1. Download this repo 2. Install Node.js 3. Install Inquirer 4. Navigate to root folder 5. Type node index.js in terminal
 
 
 ## Usage
 
-hraeh
+Screenshots forthcoming
 
 
 ## License
 
-Distributed under the [Apache 2.0 License]().
+Distributed under the [Unlicense License](https://choosealicense.com/licenses/unlicense/).
 
 
 ## Contributing
 
-3gtwaeg
+If you would like to contribute, please let us know! We are open to new ideas.
 
 
 ## Tests
 
-4WG4AG
+You may test verification by not answering a prompt. It won't accept an empty string!
 
 
 ## Questions
 
-* GitHub Profile: [REGARGA](https://github.com/REGARGA)
+* GitHub Profile: [JPDBrodeur](https://github.com/JPDBrodeur)
 
-* Email Address: [hshtr](mailto:hshtr)
+* Email Address: [jbrodeur001@gmail.com](mailto:jbrodeur001@gmail.com)
     
