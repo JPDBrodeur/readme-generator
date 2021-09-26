@@ -12,8 +12,6 @@ You can quickly and easily generate a README file by using a command-line applic
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
-* [Contributing](#contributing)
-* [Tests](#tests)
 * [Questions](#questions)
 
 
@@ -40,11 +38,6 @@ You can quickly and easily generate a README file by using a command-line applic
 ## License
 
 Distributed under the [Unlicense](https://choosealicense.com/licenses/unlicense/).
-
-
-## Tests
-
-To test the verification of user input, hit 'Enter' without typing an answer.
 
 
 ## Questions
