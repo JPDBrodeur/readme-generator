@@ -238,7 +238,7 @@ ${test}
 
 * GitHub Profile: [${github}](https://github.com/${github})
 
-* Email Address: [${email}](mailto:${email})
+* Have any additional questions? You can reach me by email at [${email}](mailto:${email}).
     `
 
     fs.writeFile(fileName, readmeContent, err => {
