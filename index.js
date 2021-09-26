@@ -196,7 +196,6 @@ function writeToFile(fileName, data) {
 
 ## Description
 
-
 ${description}
 
 ## Table of Contents
